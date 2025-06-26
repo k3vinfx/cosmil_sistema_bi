@@ -1,0 +1,81 @@
+tienda_issis
+--scripts
+
+CREATE TABLE Rol (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Usuario (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    rol_id INT NOT NULL
+);
+
+CREATE TABLE categoria (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Proveedores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    contacto VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Producto (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    precio DECIMAL(10,2) NOT NULL,
+    stock INT NOT NULL,
+    categoria_id INT NOT NULL,
+    proveedor_id INT NOT NULL
+);
+
+CREATE TABLE Cliente (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    telefono VARCHAR(20) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL
+);
+
+CREATE TABLE Pedidos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cliente_id INT NOT NULL,
+    fecha DATE NOT NULL,
+    total DECIMAL(10,2) NOT NULL
+);
+
+CREATE TABLE DetallePedido (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pedido_id INT NOT NULL,
+    producto_id INT NOT NULL,
+    cantidad INT NOT NULL,
+    subtotal DECIMAL(10,2) NOT NULL
+);
+
+CREATE TABLE Logistica (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pedido_id INT NOT NULL,
+    estado VARCHAR(50) NOT NULL,
+    fecha_envio DATE NOT NULL
+);
+
+CREATE TABLE Ventas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pedido_id INT NOT NULL,
+    fecha DATE NOT NULL,
+    total DECIMAL(10,2) NOT NULL
+);
+
+-- Agregar claves foráneas
+ALTER TABLE Usuario ADD CONSTRAINT fk_usuario_rol FOREIGN KEY (rol_id) REFERENCES Rol(id);
+ALTER TABLE Producto ADD CONSTRAINT fk_producto_categoria FOREIGN KEY (categoria_id) REFERENCES categoria(id);
+ALTER TABLE Producto ADD CONSTRAINT fk_producto_proveedor FOREIGN KEY (proveedor_id) REFERENCES Proveedores(id);
+ALTER TABLE Pedidos ADD CONSTRAINT fk_pedidos_cliente FOREIGN KEY (cliente_id) REFERENCES Cliente(id);
+ALTER TABLE DetallePedido ADD CONSTRAINT fk_detalle_pedido FOREIGN KEY (pedido_id) REFERENCES Pedidos(id);
+ALTER TABLE DetallePedido ADD CONSTRAINT fk_detalle_producto FOREIGN KEY (producto_id) REFERENCES Producto(id);
+ALTER TABLE Logistica ADD CONSTRAINT fk_logistica_pedido FOREIGN KEY (pedido_id) REFERENCES Pedidos(id);
+ALTER TABLE Ventas ADD CONSTRAINT fk_ventas_pedido FOREIGN KEY (pedido_id) REFERENCES Pedidos(id);

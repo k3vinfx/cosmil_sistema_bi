@@ -1,0 +1,197 @@
+   /* Estilos para el botón toggle */
+            #sidebarToggle {
+                width: 2.5rem;
+                height: 2.5rem;
+                text-align: center;
+                margin-bottom: 1rem;
+                cursor: pointer;
+                background: rgba(255, 255, 255, 0.2);
+                color: white;
+                transition: all 0.3s;
+            }
+
+            #sidebarToggle:hover {
+                background: rgba(255, 255, 255, 0.3);
+                transform: rotate(180deg);
+            }
+
+            #sidebarToggle:focus {
+                outline: none;
+            }
+
+            /* Clase para cuando el sidebar está contraído */
+            .sidebar-toggled #accordionSidebar {
+                width: 6.5rem !important;
+                overflow: hidden;
+            }
+
+            .sidebar-toggled #accordionSidebar .sidebar-brand {
+                width: 6.5rem;
+            }
+
+            .sidebar-toggled #accordionSidebar .nav-item .nav-link {
+                text-align: center;
+                padding: 0.85rem 1rem;
+                width: 6.5rem;
+            }
+
+            .sidebar-toggled #accordionSidebar .nav-item .nav-link span {
+                display: none;
+            }
+
+            .sidebar-toggled #accordionSidebar .nav-item .nav-link i {
+                margin-right: 0;
+                font-size: 1.1rem;
+            }
+
+            .sidebar-toggled #accordionSidebar .nav-item .nav-link::after {
+                display: none;
+            }
+
+            .sidebar-toggled #accordionSidebar .nav-item .nav-link i.fa-angle-down {
+                display: none;
+            }
+
+            .sidebar-toggled #accordionSidebar .sidebar-brand .sidebar-brand-text {
+                display: none;
+            }
+
+            .sidebar-toggled #accordionSidebar .sidebar-heading {
+                text-align: center;
+                font-size: 0.65rem;
+                padding: 0 0.5rem;
+            }
+            .sidebar {
+                background: linear-gradient(180deg,rgb(0, 105, 0) 0%,rgb(6, 80, 27) 100%);
+                min-height: 100vh;
+                position: relative;
+                overflow: hidden;
+            }
+            
+                .sidebar::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+                background-size: cover;
+                background-position: bottom;
+                opacity: 0.3;
+                z-index: 0;
+            }
+            
+            .sidebar-content {
+                position: relative;
+                z-index: 1;
+            }
+            
+            .sidebar-brand {
+                height: 4.375rem;
+                text-decoration: none;
+                position: relative;
+            }
+            
+            .sidebar-brand img {
+                max-height: 2.5rem;
+                transition: transform 0.3s ease;
+            }
+            
+            .sidebar-brand:hover img {
+                transform: rotate(10deg);
+            }
+            
+            .sidebar-divider {
+                border-top: 1px solid rgba(255, 255, 255, 0.15);
+            }
+            
+            .nav-item .nav-link {
+                color: rgba(255, 255, 255, 0.9);
+                position: relative;
+                overflow: hidden;
+                transition: all 0.3s ease;
+                padding: 0.75rem 1rem;
+                margin: 0.15rem 0;
+                border-radius: 0.25rem;
+            }
+            
+            .nav-item .nav-link::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: rgba(255, 255, 255, 0.1);
+                transition: all 0.4s ease;
+            }
+            
+            .nav-item .nav-link:hover {
+                color: #fff;
+                background: rgba(255, 255, 255, 0.1);
+            }
+            
+            .nav-item .nav-link:hover::before {
+                left: 100%;
+            }
+            
+            .nav-item .nav-link i {
+                margin-right: 0.5rem;
+                transition: transform 0.3s ease;
+            }
+            
+            .nav-item .nav-link:hover i {
+                transform: scale(1.2);
+            }
+            
+            .collapse-inner {
+                border-radius: 0.35rem;
+                box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+                background-color: white;
+                overflow: hidden;
+            }
+            
+            .sidebar .nav-item .collapse-inner .collapse-item {
+                padding: 0.6rem 1rem;
+                color: #3a3b45;
+                transition: all 0.2s ease;
+                position: relative;
+            }
+            
+            .sidebar .nav-item .collapse-inner .collapse-item::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 1rem;
+                right: 1rem;
+                height: 1px;
+                background: rgba(0, 0, 0, 0.05);
+            }
+            
+            .sidebar .nav-item .collapse-inner .collapse-item:last-child::after {
+                display: none;
+            }
+            
+            .sidebar .nav-item .collapse-inner .collapse-item:hover {
+                background-color: #f8f9fa;
+                color: #224abe;
+                padding-left: 1.2rem;
+            }
+            
+            /* Efecto de partículas */
+            .particles {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 0;
+                pointer-events: none;
+            }           
+            .particle {
+                position: absolute;
+                background-color: rgba(255, 255, 255, 0.5);
+                border-radius: 50%;
+                pointer-events: none;
+            }
